@@ -1,6 +1,9 @@
 " 保存vim立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
+" 定义快捷键的前缀:<Leader>
+let mapleader=";"
+
 " map命令
 " 在map命令前加上前缀可以组合成几种不同的命令，表示在不同的Vim模式下生效。
 " n    在普通模式 (normal) 下生效
@@ -21,8 +24,6 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " 如果 mapleader 变量没有设置，则用默认的反斜杠 \代替，因此Vim映射 :map <Leader>A oanother line<Esc> 等效于：:map \A oanother line<Esc>
 " 如果设置了 mapleader 变量，例如 :let mapleader = ","，那么 :map <Leader>A oanother line<Esc> 就等效于： :map ,A oanother line<Esc>
 
-" 定义快捷键的前缀:<Leader>
-let mapleader=";"
 " 插入行，但不进入插入模式
 nmap oo o<Esc>k
 nmap OO O<Esc>j
@@ -44,7 +45,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dense-analysis/ale'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 
@@ -130,6 +130,11 @@ set ignorecase
 set smartcase
 " 解决插入模式下delete/backspce键失效问题
 set backspace=2
+" fix starting with REPLACE mode in wsl, put end of .vimrc
+if $TERM =~ 'xterm-256color'
+   set noek
+endif
+
 
 " 插件设置
 " 设置主题
@@ -196,8 +201,7 @@ let g:ale_fixers = {
 \   'html': ['prettier'],
 \   'css': ['prettier'],
 \   'c': ['clang-format'],
-\   'cpp': ['clang-format'],
-\   'python': ['yapf'],
+\   'cpp': ['clang-format']
 \}
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
@@ -211,32 +215,21 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <C-f>  :ALEFix<CR>
 
 " 设置ctrlp.vim
+" Esc 或 <Ctrl-c> 可退出ctrlp，返回到Vim窗口中
+" F5 用于刷新当前操作路径下的文件缓存，可以使用命令 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp' 设置缓存文件存放路径
+" <Ctrl-k> 和 <Ctrl-j> 在模糊搜索结果列表中上下移动 (当然也可以使用键盘上的上下方向键)
+" <Ctrl-f> 和 <Ctrl-b> 在查找文件模式、查找缓冲区模式、查找MRU文件几种模式间进行切换 (cycle between modes)
+" <Ctrl-d> 在 路径匹配 和 文件名匹配 之间切换 (switch to filename search instead of full path) ，可以通过设置 let g:ctrlp_by_filename = 1 来设置默认使用 文件名匹配 模式进行模糊搜索
+" <Ctrl-r> 在 字符串模式 和 正则表达式模式 之间切换 (switch to regexp mode)
+" <Ctrl-t> 在新的Vim标签页中打开文件 (open the selected entry in a new tab)
+" <Ctrl-v> 垂直分割窗口打开文件
+" <Ctrl-x> 水平分割窗口打开文件
+" <Ctrl-p> 或` 选择前或后一条历史记录
+" <Ctrl-y> 用于当搜索的目标文件不存在时创建文件及父目录 (create a new file and its parent directories)
+" <Ctrl-z> 标记或取消标记多个文件， 标记多个文件后可以使用 <Ctrl-o> 同时打开多个文件 (mark/unmark multiple files and to open them)
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn))|(node_modules)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
-
-" 设置gutengtags
-" ctrl+] 跳转ctrl+o 跳回 ctrl+w+] 新窗口打开
-" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
-" 所生成的数据文件的名称 "
-let g:gutentags_ctags_tagfile = '.tags'
-" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
-" 检测 ~/.cache/tags 不存在就新建 "
-if !isdirectory(s:vim_tags)
-  silent! call mkdir(s:vim_tags, 'p')
-endif
-" 配置 ctags 的参数
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
-" fix starting with REPLACE mode in wsl, put end of .vimrc
-if $TERM =~ 'xterm-256color'
-   set noek
-endif
