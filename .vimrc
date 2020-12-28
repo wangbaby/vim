@@ -45,7 +45,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dense-analysis/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'preservim/nerdcommenter'
 call plug#end()
 
 
