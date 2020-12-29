@@ -224,6 +224,7 @@ nmap <C-f>  :ALEFix<CR>
 " <Ctrl-y> 用于当搜索的目标文件不存在时创建文件及父目录 (create a new file and its parent directories)
 " <Ctrl-z> 标记或取消标记多个文件， 标记多个文件后可以使用 <Ctrl-o> 同时打开多个文件 (mark/unmark multiple files and to open them)
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn))|(node_modules)$',
   \ 'file': '\v\.(exe|so|dll)$',
