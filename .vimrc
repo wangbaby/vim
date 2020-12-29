@@ -24,10 +24,6 @@ let mapleader=";"
 " 如果 mapleader 变量没有设置，则用默认的反斜杠 \代替，因此Vim映射 :map <Leader>A oanother line<Esc> 等效于：:map \A oanother line<Esc>
 " 如果设置了 mapleader 变量，例如 :let mapleader = ","，那么 :map <Leader>A oanother line<Esc> 就等效于： :map ,A oanother line<Esc>
 
-" 插入行，但不进入插入模式
-nmap oo o<Esc>k
-nmap OO O<Esc>j
-
 " 插件安装
 " 自动安装vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
