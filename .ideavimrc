@@ -1,0 +1,66 @@
+let mapleader=";"
+
+""" Plugins  --------------------------------
+set NERDTree
+set commentary
+
+
+""" Common settings -------------------------
+" vim设置
+" 显示行号
+set nu
+" 显示光标所在的当前行的行号，其他行都为相对于该行的相对行号
+"set relativenumber
+"" 设置行宽
+set textwidth=80
+" 与许多文本编辑器不同，Vim 会区分实际行与屏幕行。当 wrap 设置被启用时 (缺省启用)，每个超出窗口宽度的文本行都会被回绕显示，以保证没有文本显示不出来
+" 这样一来，文件中的一行也许会被显示为屏幕上的若干行。要想知道实际行与屏幕行之间的不同，最简单的方法是启用 number设置
+" 启用后，以行号开头的行对应着一个实际行，它们会占据着屏幕上的一行或几行; 当一行文本为适应窗口宽度而回绕时，回绕行的前面则不会显示行号.
+set wrap
+"" 只有遇到指定的符号（比如空格、连词号和其他标点符号），才发生折行，不会在单词内部折行
+set linebreak "
+"" 指定折行处与编辑窗口的右边缘之间空出的字符数
+set wrapmargin=2
+" 左下角显示状态
+set showmode
+"" 一般模式下在底部显示当前键入的指令
+set showcmd
+" 光标遇到圆括号、方括号、大括号时，自动高亮对应的另一个圆括号、方括号和大括号
+set showmatch
+" 当 wildmenu 选项被启用时，Vim 会提供一个补全导航列表，可以按 <Tab> 、<C-n> 或 <Right> 正向遍历其列表项，也可以用 <S-Tab>、<C-p> 或 <Left> 对其进行反向遍历
+"" 总是显示状态栏
+set laststatus=2
+" 显示光标当前位置
+set ruler
+"" 高亮显示当前行/列
+set cursorline
+set cursorcolumn
+"" 将制表符扩展为空格
+set expandtab
+"" 设置编辑时制表符占用空格数
+set tabstop=2
+"" 设置自动缩进时制表符占用空格数
+set shiftwidth=2
+"" 当 ignorecase 和 smartcase 选项均打开时，如果搜索模式中包含大写字母，Vim就会认为当前的查找(搜索)是区分大小写的。如果搜索模式中不包含任何大写字母，Vim 则会认为搜索应该不区分大小写。这是个比较 ”智能的” 推测你搜索意图的机制
+set ignorecase
+set smartcase
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+""" Mappings --------------------------------
+nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-p> <Action>(SearchEverywhere)
+
+nmap <Leader>a gcc
+vmap <Leader>a gc
+map <leader>b <Action>(BuildProject)
+map <leader>d <Action>(Debug)
+map <leader>f <Action>(ReformatCode)
+map <leader>g <Action>(Vcs.Show.Shelf)
+map <leader>o <Action>(FileStructurePopup)
+map <leader>r <Action>(Run)
+map <leader>s <Action>(Stop)
+map <leader>t <Action>(ActivateTerminalToolWindo)

@@ -41,6 +41,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dense-analysis/ale'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 
