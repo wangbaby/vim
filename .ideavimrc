@@ -51,6 +51,7 @@ set ideastatusicon=gray
 set idearefactormode=keep
 
 """ Mappings --------------------------------
+nmap <C-f> <Action>(FindInPath)
 nmap <C-n> :NERDTreeToggle<CR>
 nmap <C-p> <Action>(SearchEverywhere)
 
@@ -60,6 +61,7 @@ map <leader>b <Action>(BuildProject)
 map <leader>d <Action>(Debug)
 map <leader>f <Action>(ReformatCode)
 map <leader>g <Action>(Vcs.Show.Shelf)
+map <leader>h <Action>(HideActiveWindow)
 map <leader>o <Action>(FileStructurePopup)
 map <leader>r <Action>(Run)
 map <leader>s <Action>(Stop)
