@@ -52,7 +52,6 @@ set idearefactormode=keep
 
 """ Mappings --------------------------------
 nmap <C-f> <Action>(FindInPath)
-nmap <C-n> :NERDTreeToggle<CR>
 nmap <C-p> <Action>(SearchEverywhere)
 
 nmap <Leader>a gcc
@@ -65,4 +64,5 @@ map <leader>h <Action>(HideActiveWindow)
 map <leader>n <Action>(NewFile)
 map <leader>r <Action>(Run)
 map <leader>s <Action>(Stop)
-map <leader>t <Action>(ActivateTerminalToolWindo)
+map <leader>tf :NERDTreeFocus<CR>
+map <leader>tc :NERDTreeClose<CR>
