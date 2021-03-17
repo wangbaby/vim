@@ -51,8 +51,8 @@ set ideastatusicon=gray
 set idearefactormode=keep
 
 """ Mappings --------------------------------
-nmap <C-f> <Action>(FindInPath)
-nmap <C-p> <Action>(SearchEverywhere)
+map <C-f> <Action>(FindInPath)
+map <C-p> <Action>(SearchEverywhere)
 
 nmap <Leader>a gcc
 vmap <Leader>a gc
