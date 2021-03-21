@@ -1,14 +1,16 @@
 {
-    "title": "Change left_control to fn",
+    "title": "left_control",
     "rules": [
         {
-            "description": "Change left_control to fn",
+            "description": "left_control",
             "manipulators": [
                 {
-                    "type": "basic",
                     "from": {
-                        "key_code": "left_control",
+                        "key_code": "open_bracket",
                         "modifiers": {
+                            "mandatory": [
+                                "left_control"
+                            ],
                             "optional": [
                                 "any"
                             ]
@@ -16,10 +18,10 @@
                     },
                     "to": [
                         {
-                            "key_code": "fn",
-                            "lazy": true
+                            "key_code": "escape"
                         }
-                    ]
+                    ],
+                    "type": "basic"
                 }
             ]
         }
